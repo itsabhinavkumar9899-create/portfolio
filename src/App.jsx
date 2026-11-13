@@ -8,6 +8,7 @@ import Education from './components/Education';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
 import ResumeModal from './components/ResumeModal';
+import PageBackground from './components/PageBackground';
 import { CheckCircle2, X } from 'lucide-react';
 
 export default function App() {
@@ -22,13 +23,16 @@ export default function App() {
   };
 
   return (
-    <div className="min-h-screen bg-[#030712] text-slate-100 flex flex-col font-sans selection:bg-cyan-500/30 selection:text-cyan-200">
+    <div className="relative min-h-screen bg-[#030712] text-slate-100 flex flex-col font-sans selection:bg-pink-500/30 selection:text-pink-200">
       
+      {/* Full-Page Animated Backdrop */}
+      <PageBackground />
+
       {/* Top Floating Glass Navigation */}
       <Navbar onOpenResume={() => setResumeModalOpen(true)} />
 
       {/* Main Content Sections */}
-      <main className="flex-1">
+      <main className="relative z-10 flex-1">
         <Hero onOpenResume={() => setResumeModalOpen(true)} />
         <About />
         <Skills />
@@ -48,8 +52,8 @@ export default function App() {
 
       {/* Global Interactive Notification Toast */}
       {toastMessage && (
-        <div className="fixed bottom-6 right-6 z-50 flex items-center gap-3 px-4 py-3 rounded-xl bg-slate-900/95 border border-cyan-500/50 text-slate-100 shadow-[0_10px_30px_rgba(0,0,0,0.5)] backdrop-blur-xl animate-in fade-in slide-in-from-bottom-5 duration-300">
-          <CheckCircle2 className="w-5 h-5 text-emerald-400 shrink-0" />
+        <div className="fixed bottom-4 left-4 right-4 sm:left-auto sm:bottom-6 sm:right-6 z-50 flex items-center gap-3 px-4 py-3 rounded-xl bg-slate-900/95 border border-green-500/50 text-slate-100 shadow-[0_10px_30px_rgba(0,0,0,0.5)] md:backdrop-blur-xl animate-in fade-in slide-in-from-bottom-5 duration-300">
+          <CheckCircle2 className="w-5 h-5 text-green-400 shrink-0" />
           <span className="text-xs font-medium text-slate-200">{toastMessage}</span>
           <button 
             onClick={() => setToastMessage(null)}

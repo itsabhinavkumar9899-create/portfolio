@@ -9,17 +9,25 @@ export default {
     extend: {
       colors: {
         brand: {
-          50: '#f0fdfa',
-          100: '#ccfbf1',
-          200: '#99f6e4',
-          300: '#5eead4',
-          400: '#2dd4bf',
-          500: '#14b8a6',
-          600: '#0d9488',
-          700: '#0f766e',
-          800: '#115e59',
-          900: '#134e4a',
-          accent: '#06b6d4', // Cyan accent
+          50: '#fdf2f8',
+          100: '#fce7f3',
+          200: '#fbcfe8',
+          300: '#f472b6',
+          400: '#ec4899',
+          500: '#db2777',
+          guava: {
+            light: '#86efac',
+            DEFAULT: '#4ade80',
+            dark: '#22c55e',
+            deep: '#15803d',
+          },
+          pink: {
+            light: '#f472b6',
+            DEFAULT: '#ec4899',
+            dark: '#db2777',
+            rose: '#f43f5e',
+          },
+          accent: '#4ade80', // Guava green primary accent
         },
         surface: {
           50: '#f8fafc',

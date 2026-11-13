@@ -5,12 +5,19 @@
 @layer base {
   html {
     scroll-behavior: smooth;
+    overflow-x: clip;
   }
   
   body {
     background-color: #030712;
     color: #f1f5f9;
-    overflow-x: hidden;
+    overflow-x: clip;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  a,
+  button {
+    touch-action: manipulation;
   }
 
   /* Custom scrollbar */
@@ -31,30 +38,45 @@
 
 @layer utilities {
   .text-glow {
-    text-shadow: 0 0 24px rgba(6, 182, 212, 0.45);
+    text-shadow: 0 0 24px rgba(74, 222, 128, 0.45), 0 0 36px rgba(236, 72, 153, 0.35);
   }
   
   .glass-nav {
-    background: rgba(10, 15, 29, 0.75);
-    backdrop-filter: blur(16px);
-    -webkit-backdrop-filter: blur(16px);
+    background: rgba(10, 15, 29, 0.88);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
     border: 1px solid rgba(255, 255, 255, 0.08);
   }
 
+  /* Avoid expensive multi-layer backdrop blurs on mobile GPUs; restore full glass blur on tablet/desktop */
   .glass-card {
-    background: rgba(15, 23, 42, 0.6);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-    border: 1px solid rgba(255, 255, 255, 0.07);
+    background: rgba(15, 23, 42, 0.84);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+  }
+
+  @media (min-width: 768px) {
+    .glass-nav {
+      background: rgba(10, 15, 29, 0.75);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+    }
+
+    .glass-card {
+      background: rgba(15, 23, 42, 0.62);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+    }
   }
 
   .glass-card-hover {
-    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    transition: border-color 0.25s ease, box-shadow 0.25s ease, transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
   }
-  .glass-card-hover:hover {
-    border-color: rgba(6, 182, 212, 0.3);
-    box-shadow: 0 10px 30px -10px rgba(6, 182, 212, 0.15);
-    transform: translateY(-2px);
+  @media (hover: hover) {
+    .glass-card-hover:hover {
+      border-color: rgba(74, 222, 128, 0.4);
+      box-shadow: 0 10px 30px -10px rgba(236, 72, 153, 0.22);
+      transform: translateY(-2px);
+    }
   }
 
   .bg-grid-pattern {
@@ -67,5 +89,88 @@
   .bg-dots-pattern {
     background-image: radial-gradient(rgba(255, 255, 255, 0.08) 1px, transparent 1px);
     background-size: 24px 24px;
+  }
+
+  .animate-aurora-1 {
+    animation: auroraDrift1 18s ease-in-out infinite alternate;
+    will-change: transform, opacity;
+  }
+
+  .animate-aurora-2 {
+    animation: auroraDrift2 22s ease-in-out infinite alternate;
+    will-change: transform, opacity;
+  }
+
+  .animate-aurora-3 {
+    animation: auroraDrift3 26s ease-in-out infinite alternate;
+    will-change: transform, opacity;
+  }
+
+  .animate-grid-flow {
+    animation: gridFlow 20s linear infinite;
+    will-change: transform;
+  }
+}
+
+@keyframes auroraDrift1 {
+  0% {
+    transform: translate3d(-5%, -4%, 0) scale(1);
+    opacity: 0.75;
+  }
+  50% {
+    transform: translate3d(6%, 4%, 0) scale(1.12);
+    opacity: 1;
+  }
+  100% {
+    transform: translate3d(-3%, 8%, 0) scale(0.96);
+    opacity: 0.8;
+  }
+}
+
+@keyframes auroraDrift2 {
+  0% {
+    transform: translate3d(0, 0, 0) scale(1) rotate(0deg);
+    opacity: 0.65;
+  }
+  50% {
+    transform: translate3d(-8%, 6%, 0) scale(1.15) rotate(8deg);
+    opacity: 0.95;
+  }
+  100% {
+    transform: translate3d(5%, -5%, 0) scale(0.95) rotate(-5deg);
+    opacity: 0.7;
+  }
+}
+
+@keyframes auroraDrift3 {
+  0% {
+    transform: translate3d(0, 0, 0) scale(0.95);
+    opacity: 0.6;
+  }
+  50% {
+    transform: translate3d(7%, -7%, 0) scale(1.14);
+    opacity: 0.9;
+  }
+  100% {
+    transform: translate3d(-6%, 5%, 0) scale(1);
+    opacity: 0.65;
+  }
+}
+
+@keyframes gridFlow {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+  100% {
+    transform: translate3d(40px, 40px, 0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-aurora-1,
+  .animate-aurora-2,
+  .animate-aurora-3,
+  .animate-grid-flow {
+    animation: none;
   }
 }

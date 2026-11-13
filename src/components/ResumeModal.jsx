@@ -25,6 +25,8 @@ export default function ResumeModal({ isOpen, onClose }) {
 ${personalInfo.name.toUpperCase()}
 ${personalInfo.role}
 Email: ${personalInfo.email}
+GitHub: ${personalInfo.github}
+LinkedIn: ${personalInfo.linkedin}
 Location: ${personalInfo.location}
 Target: Software Engineering (High-Scale & FAANG/MANGA)
 ======================================================
@@ -78,35 +80,38 @@ FEATURED SOFTWARE PROJECTS:
       <div className="relative w-full max-w-4xl bg-slate-900 border border-slate-700/80 rounded-2xl shadow-2xl max-h-[92vh] flex flex-col overflow-hidden">
         
         {/* Action Header Bar */}
-        <div className="px-6 py-4 bg-slate-950/90 border-b border-slate-800 flex items-center justify-between">
+        <div className="px-4 py-3 sm:px-6 sm:py-4 bg-slate-950/90 border-b border-slate-800 flex flex-wrap items-center justify-between gap-2">
           <div className="flex items-center gap-2">
-            <span className="text-xs font-mono uppercase tracking-wider text-cyan-400 font-semibold">
-              Curriculum Vitae / Resume Preview
+            <span className="text-xs font-mono uppercase tracking-wider text-green-400 font-semibold">
+              <span className="sm:hidden">Resume Preview</span>
+              <span className="hidden sm:inline">Curriculum Vitae / Resume Preview</span>
             </span>
           </div>
 
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-1.5 sm:gap-2">
             <button
               onClick={handleDownloadText}
-              className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold bg-slate-800 hover:bg-slate-700 text-slate-200 transition-colors"
+              className="inline-flex items-center gap-1.5 px-2.5 sm:px-3 py-1.5 rounded-lg text-xs font-semibold bg-slate-800 hover:bg-slate-700 text-slate-200 transition-colors"
               title="Download text resume"
             >
-              <Download className="w-3.5 h-3.5 text-cyan-400" />
-              <span>Download (.txt)</span>
+              <Download className="w-3.5 h-3.5 text-pink-400" />
+              <span className="hidden sm:inline">Download (.txt)</span>
+              <span className="sm:hidden">.txt</span>
             </button>
 
             <button
               onClick={handlePrint}
-              className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold bg-gradient-to-r from-cyan-500 to-blue-600 text-white shadow-sm hover:scale-105 transition-transform"
+              className="inline-flex items-center gap-1.5 px-2.5 sm:px-3 py-1.5 rounded-lg text-xs font-bold bg-gradient-to-r from-green-400 via-emerald-400 to-pink-500 text-slate-950 shadow-sm md:hover:scale-105 transition-transform"
               title="Print or Save as PDF"
             >
-              <Printer className="w-3.5 h-3.5" />
-              <span>Print / PDF</span>
+              <Printer className="w-3.5 h-3.5 text-slate-950" />
+              <span className="hidden sm:inline">Print / PDF</span>
+              <span className="sm:hidden">PDF</span>
             </button>
 
             <button
               onClick={onClose}
-              className="p-1.5 rounded-lg bg-slate-800 text-slate-400 hover:text-white transition-colors ml-2"
+              className="p-1.5 rounded-lg bg-slate-800 text-slate-400 hover:text-white transition-colors ml-1 sm:ml-2"
               aria-label="Close modal"
             >
               <X className="w-5 h-5" />
@@ -115,7 +120,7 @@ FEATURED SOFTWARE PROJECTS:
         </div>
 
         {/* Resume Content Body (FAANG-Format Preview) */}
-        <div className="p-6 sm:p-10 overflow-y-auto bg-slate-950 text-slate-200 font-sans space-y-6 select-text">
+        <div className="p-4 sm:p-10 overflow-y-auto overscroll-contain bg-slate-950 text-slate-200 font-sans space-y-6 select-text">
           
           {/* Header */}
           <div className="border-b border-slate-800 pb-6 text-center sm:text-left sm:flex sm:items-center sm:justify-between">
@@ -123,13 +128,40 @@ FEATURED SOFTWARE PROJECTS:
               <h1 className="text-3xl font-extrabold text-white tracking-tight">
                 {personalInfo.name}
               </h1>
-              <p className="text-sm font-semibold text-cyan-400 font-mono mt-1">
+              <p className="text-sm font-semibold text-green-400 font-mono mt-1">
                 {personalInfo.role}
               </p>
             </div>
 
             <div className="mt-4 sm:mt-0 text-xs text-slate-400 space-y-1 sm:text-right font-mono">
-              <div>{personalInfo.email}</div>
+              <div>
+                <a
+                  href={`mailto:${personalInfo.email}`}
+                  className="text-green-400 hover:underline"
+                >
+                  {personalInfo.email}
+                </a>
+              </div>
+              <div>
+                <a
+                  href={personalInfo.github}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-pink-400 hover:underline"
+                >
+                  github.com/{personalInfo.githubProfile.username}
+                </a>
+              </div>
+              <div>
+                <a
+                  href={personalInfo.linkedin}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-green-400 hover:underline"
+                >
+                  linkedin.com/in/abhinav-kumar-0363b4262
+                </a>
+              </div>
               <div>{personalInfo.location}</div>
               <div>B.Tech Graduation: 2028</div>
             </div>
@@ -137,7 +169,7 @@ FEATURED SOFTWARE PROJECTS:
 
           {/* Objective */}
           <div>
-            <h2 className="text-xs font-mono uppercase tracking-wider text-cyan-400 font-bold border-b border-slate-800 pb-1 mb-2">
+            <h2 className="text-xs font-mono uppercase tracking-wider text-green-400 font-bold border-b border-slate-800 pb-1 mb-2">
               Career Objective & Profile
             </h2>
             <p className="text-xs sm:text-sm text-slate-300 leading-relaxed">
@@ -147,13 +179,13 @@ FEATURED SOFTWARE PROJECTS:
 
           {/* Education */}
           <div>
-            <h2 className="text-xs font-mono uppercase tracking-wider text-cyan-400 font-bold border-b border-slate-800 pb-1 mb-3">
+            <h2 className="text-xs font-mono uppercase tracking-wider text-pink-400 font-bold border-b border-slate-800 pb-1 mb-3">
               Education
             </h2>
             <div className="space-y-1">
               <div className="flex flex-col sm:flex-row sm:items-center justify-between text-sm font-bold text-white">
                 <span>{educationData.institution}</span>
-                <span className="text-xs font-mono text-cyan-400">{educationData.duration}</span>
+                <span className="text-xs font-mono text-green-400">{educationData.duration}</span>
               </div>
               <div className="text-xs text-slate-300 font-medium">
                 {educationData.degree} in {educationData.major}
@@ -166,7 +198,7 @@ FEATURED SOFTWARE PROJECTS:
 
           {/* Technical Skills */}
           <div>
-            <h2 className="text-xs font-mono uppercase tracking-wider text-cyan-400 font-bold border-b border-slate-800 pb-1 mb-3">
+            <h2 className="text-xs font-mono uppercase tracking-wider text-green-400 font-bold border-b border-slate-800 pb-1 mb-3">
               Technical Stack & Competencies
             </h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs">
@@ -191,7 +223,7 @@ FEATURED SOFTWARE PROJECTS:
 
           {/* Featured Projects */}
           <div>
-            <h2 className="text-xs font-mono uppercase tracking-wider text-cyan-400 font-bold border-b border-slate-800 pb-1 mb-3">
+            <h2 className="text-xs font-mono uppercase tracking-wider text-pink-400 font-bold border-b border-slate-800 pb-1 mb-3">
               Key Engineering Projects
             </h2>
 
@@ -200,7 +232,7 @@ FEATURED SOFTWARE PROJECTS:
                 <div key={project.id} className="text-xs">
                   <div className="flex flex-col sm:flex-row sm:items-center justify-between font-bold text-slate-200">
                     <span className="text-white text-sm">{project.title}</span>
-                    <span className="font-mono text-cyan-400 text-[11px]">[{project.tech.slice(0, 4).join(', ')}]</span>
+                    <span className="font-mono text-green-400 text-[11px]">[{project.tech.slice(0, 4).join(', ')}]</span>
                   </div>
                   <ul className="list-disc list-inside mt-1.5 space-y-1 text-slate-300">
                     {project.highlights.map((h, i) => (

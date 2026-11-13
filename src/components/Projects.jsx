@@ -15,6 +15,7 @@ import {
   Server
 } from 'lucide-react';
 import { projectsData } from '../data/portfolioData';
+import SocialIconWithCard from './SocialIconWithCard';
 
 export default function Projects() {
   const [selectedFilter, setSelectedFilter] = useState('All');
@@ -27,17 +28,17 @@ export default function Projects() {
     : projectsData.filter(p => p.category === selectedFilter);
 
   return (
-    <section id="projects" className="py-24 px-4 relative">
+    <section id="projects" className="py-16 sm:py-24 px-4 relative">
       <div className="max-w-6xl mx-auto">
         
         {/* Section Header */}
-        <div className="flex flex-col items-center text-center mb-14">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-slate-900/80 border border-slate-800 text-cyan-400 text-xs font-mono mb-3">
+        <div className="flex flex-col items-center text-center mb-10 sm:mb-14">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-slate-900/80 border border-slate-800 text-green-400 text-xs font-mono mb-3">
             <FolderGit2 className="w-3.5 h-3.5" />
             <span>03. FEATURED SYSTEMS</span>
           </div>
           <h2 className="text-3xl sm:text-4xl font-extrabold text-white tracking-tight">
-            Production-Style <span className="bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 to-blue-500">Software Projects</span>
+            Production-Style <span className="bg-clip-text text-transparent bg-gradient-to-r from-green-400 via-pink-300 to-pink-500">Software Projects</span>
           </h2>
           <p className="mt-3 text-sm sm:text-base text-slate-400 max-w-2xl">
             Real-world web architectures, distributed platforms, and machine learning models engineered for scale, reliability, and performance.
@@ -45,15 +46,15 @@ export default function Projects() {
         </div>
 
         {/* Filter Tabs */}
-        <div className="flex justify-center mb-12">
-          <div className="inline-flex p-1.5 rounded-xl bg-slate-900/90 border border-slate-800 shadow-inner">
+        <div className="flex justify-center mb-10 sm:mb-12">
+          <div className="inline-flex flex-wrap justify-center gap-1 p-1.5 rounded-xl bg-slate-900/90 border border-slate-800 shadow-inner max-w-full">
             {filters.map((filter) => (
               <button
                 key={filter}
                 onClick={() => setSelectedFilter(filter)}
-                className={`px-4 py-1.5 text-xs font-medium rounded-lg transition-all ${
+                className={`px-3 sm:px-4 py-2 sm:py-1.5 text-xs font-medium rounded-lg transition-all ${
                   selectedFilter === filter
-                    ? 'bg-gradient-to-r from-cyan-500 to-blue-600 text-white font-semibold shadow-md'
+                    ? 'bg-gradient-to-r from-green-400 via-emerald-400 to-pink-500 text-slate-950 font-bold shadow-md'
                     : 'text-slate-400 hover:text-slate-200 hover:bg-slate-800/60'
                 }`}
               >
@@ -68,10 +69,10 @@ export default function Projects() {
           {filteredProjects.map((project) => (
             <div
               key={project.id}
-              className={`rounded-2xl border transition-all duration-300 flex flex-col justify-between overflow-hidden group ${
+              className={`rounded-2xl border transition-all duration-300 flex flex-col justify-between group ${
                 project.featured 
-                  ? 'border-slate-700/80 bg-slate-900/60 hover:border-cyan-500/50 hover:shadow-[0_10px_35px_-10px_rgba(6,182,212,0.2)]' 
-                  : 'border-slate-800/80 bg-slate-950/60 hover:border-slate-700/80'
+                  ? 'border-slate-700/80 bg-slate-900/60 hover:border-green-400/50 hover:shadow-[0_10px_35px_-10px_rgba(74,222,128,0.25)]' 
+                  : 'border-slate-800/80 bg-slate-950/60 hover:border-pink-500/40'
               }`}
             >
               {/* Card Top Preview / Banner Bar */}
@@ -79,26 +80,24 @@ export default function Projects() {
                 
                 {/* Meta Header */}
                 <div className="flex items-center justify-between gap-2 mb-3">
-                  <span className="text-[11px] font-mono uppercase tracking-wider text-cyan-400 font-semibold px-2.5 py-0.5 rounded-md bg-cyan-950/60 border border-cyan-800/40">
+                  <span className="text-[11px] font-mono uppercase tracking-wider text-pink-300 font-semibold px-2.5 py-0.5 rounded-md bg-pink-950/60 border border-pink-800/40">
                     {project.badge || project.category}
                   </span>
 
                   <div className="flex items-center gap-2">
-                    <a
+                    <SocialIconWithCard
+                      platform="github"
                       href={project.github}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="p-1.5 rounded-lg bg-slate-800/80 text-slate-300 hover:text-white hover:bg-slate-700 transition-colors"
-                      aria-label="View source on GitHub"
-                      title="GitHub Repository"
-                    >
-                      <Github className="w-4 h-4" />
-                    </a>
+                      placement="bottom"
+                      align="right"
+                      iconClassName="w-4 h-4"
+                      buttonClassName="inline-flex items-center justify-center p-1.5 rounded-lg bg-slate-800/80 text-slate-300 hover:text-white hover:bg-slate-700 transition-colors"
+                    />
                     <a
                       href={project.live}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="p-1.5 rounded-lg bg-cyan-500/20 text-cyan-300 hover:text-white hover:bg-cyan-500/40 border border-cyan-500/30 transition-colors"
+                      className="p-1.5 rounded-lg bg-green-400/15 text-green-300 hover:text-white hover:bg-green-400/30 border border-green-400/30 transition-colors"
                       aria-label="View Live Project"
                       title="Live Deployment"
                     >
@@ -108,9 +107,9 @@ export default function Projects() {
                 </div>
 
                 {/* Project Title & Subtitle */}
-                <h3 className="text-xl font-bold text-white group-hover:text-cyan-300 transition-colors flex items-center justify-between">
+                <h3 className="text-xl font-bold text-white group-hover:text-green-300 transition-colors flex items-center justify-between">
                   <span>{project.title}</span>
-                  <ArrowUpRight className="w-5 h-5 opacity-0 group-hover:opacity-100 group-hover:translate-x-1 group-hover:-translate-y-1 transition-all text-cyan-400" />
+                  <ArrowUpRight className="w-5 h-5 opacity-0 group-hover:opacity-100 group-hover:translate-x-1 group-hover:-translate-y-1 transition-all text-green-400" />
                 </h3>
                 <p className="text-xs text-slate-400 mt-1 font-mono">
                   {project.subtitle}
@@ -124,12 +123,12 @@ export default function Projects() {
                 {/* Architectural Highlights */}
                 <div className="mt-5 space-y-2 border-t border-slate-800/70 pt-4">
                   <div className="text-[11px] font-mono text-slate-400 uppercase tracking-wider mb-2 flex items-center gap-1.5">
-                    <Layers className="w-3.5 h-3.5 text-cyan-400" />
+                    <Layers className="w-3.5 h-3.5 text-pink-400" />
                     <span>Architectural Highlights</span>
                   </div>
                   {project.highlights.slice(0, 3).map((item, i) => (
                     <div key={i} className="flex items-start gap-2 text-xs text-slate-300">
-                      <span className="text-cyan-400 font-bold mt-0.5">•</span>
+                      <span className="text-green-400 font-bold mt-0.5">•</span>
                       <span>{item}</span>
                     </div>
                   ))}
@@ -137,7 +136,7 @@ export default function Projects() {
               </div>
 
               {/* Card Footer: Tech Tags & Deep Dive Trigger */}
-              <div className="p-6 pt-4 bg-slate-950/50 border-t border-slate-800/60 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+              <div className="p-6 pt-4 rounded-b-2xl bg-slate-950/50 border-t border-slate-800/60 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
                 <div className="flex flex-wrap gap-1.5">
                   {project.tech.map((t) => (
                     <span
@@ -151,7 +150,7 @@ export default function Projects() {
 
                 <button
                   onClick={() => setActiveProjectModal(project)}
-                  className="inline-flex items-center justify-center gap-1.5 text-xs font-semibold text-cyan-400 hover:text-cyan-300 transition-colors whitespace-nowrap self-end sm:self-auto"
+                  className="inline-flex items-center justify-center gap-1.5 text-xs font-semibold text-green-400 hover:text-green-300 transition-colors whitespace-nowrap self-end sm:self-auto"
                 >
                   <Info className="w-3.5 h-3.5" />
                   <span>Deep Dive Spec</span>
@@ -170,7 +169,7 @@ export default function Projects() {
               {/* Modal Header */}
               <div className="p-6 border-b border-slate-800 flex items-center justify-between bg-slate-950/80">
                 <div>
-                  <div className="text-xs font-mono text-cyan-400 uppercase tracking-wider mb-1">
+                  <div className="text-xs font-mono text-pink-400 uppercase tracking-wider mb-1">
                     System Architecture & Design Document
                   </div>
                   <h3 className="text-xl font-bold text-white">
@@ -186,7 +185,7 @@ export default function Projects() {
               </div>
 
               {/* Modal Body */}
-              <div className="p-6 overflow-y-auto space-y-6 text-sm text-slate-300 leading-relaxed">
+              <div className="p-5 sm:p-6 overflow-y-auto overscroll-contain space-y-6 text-sm text-slate-300 leading-relaxed">
                 
                 <div>
                   <h4 className="text-xs font-mono uppercase tracking-wider text-slate-400 mb-2">
@@ -202,7 +201,7 @@ export default function Projects() {
                   <ul className="space-y-2">
                     {activeProjectModal.highlights.map((h, i) => (
                       <li key={i} className="flex items-start gap-2.5">
-                        <CheckCircle className="w-4 h-4 text-cyan-400 shrink-0 mt-0.5" />
+                        <CheckCircle className="w-4 h-4 text-green-400 shrink-0 mt-0.5" />
                         <span>{h}</span>
                       </li>
                     ))}
@@ -215,7 +214,7 @@ export default function Projects() {
                   </h4>
                   <div className="flex flex-wrap gap-2">
                     {activeProjectModal.tech.map((t) => (
-                      <span key={t} className="px-2.5 py-1 rounded-lg bg-slate-950 border border-slate-700 text-cyan-300 text-xs font-mono">
+                      <span key={t} className="px-2.5 py-1 rounded-lg bg-slate-950 border border-slate-700 text-green-300 text-xs font-mono">
                         {t}
                       </span>
                     ))}
@@ -224,7 +223,7 @@ export default function Projects() {
 
                 <div className="p-4 rounded-xl bg-slate-950/80 border border-slate-800 text-xs font-mono">
                   <div className="text-slate-400 mb-1 flex items-center gap-1.5">
-                    <Server className="w-4 h-4 text-emerald-400" />
+                    <Server className="w-4 h-4 text-green-400" />
                     <span>Deployment & CI/CD Status</span>
                   </div>
                   <div className="text-slate-200">
@@ -249,9 +248,9 @@ export default function Projects() {
                   href={activeProjectModal.live}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 px-4 py-2 rounded-xl text-xs font-semibold bg-gradient-to-r from-cyan-500 to-blue-600 text-white shadow-md hover:scale-105 transition-transform"
+                  className="inline-flex items-center gap-2 px-4 py-2 rounded-xl text-xs font-bold bg-gradient-to-r from-green-400 via-emerald-400 to-pink-500 text-slate-950 shadow-md hover:scale-105 transition-transform"
                 >
-                  <ExternalLink className="w-4 h-4" />
+                  <ExternalLink className="w-4 h-4 text-slate-950" />
                   <span>View Live Deployment</span>
                 </a>
               </div>

@@ -10,14 +10,57 @@ export const personalInfo = {
   gradYear: "2028",
   period: "2024 - 2028",
   availability: "Available for Software Engineering Internships",
-  github: "https://github.com",
-  linkedin: "https://linkedin.com",
+  github: "https://github.com/itsabhinavkumar9899-create",
+  githubProfile: {
+    username: "itsabhinavkumar9899-create",
+    url: "https://github.com/itsabhinavkumar9899-create",
+    bio: "B.Tech CS & Data Science '28 @ VGI Greater Noida • Engineering scalable MERN, Python & ML systems.",
+    highlights: ["MERN Stack", "Python & ML", "DSA & Systems"],
+    status: "Active Open-Source Builder"
+  },
+  linkedin: "https://www.linkedin.com/in/abhinav-kumar-0363b4262/",
   rolesList: [
     "Full-Stack Engineer",
     "Data Science Undergrad",
     "System Builder",
     "Problem Solver"
   ]
+};
+
+export const socialProfiles = {
+  github: {
+    id: "github",
+    platform: "GitHub",
+    handle: "@itsabhinavkumar9899-create",
+    url: "https://github.com/itsabhinavkumar9899-create",
+    displayUrl: "github.com/itsabhinavkumar9899-create",
+    bio: "B.Tech CS & Data Science '28 @ VGI Greater Noida • Engineering scalable MERN, Python & ML systems.",
+    status: "Active Open-Source Builder",
+    highlights: ["MERN Stack", "Python & ML", "DSA & Systems"],
+    accent: "guava"
+  },
+  linkedin: {
+    id: "linkedin",
+    platform: "LinkedIn",
+    handle: "in/abhinav-kumar-0363b4262",
+    url: "https://www.linkedin.com/in/abhinav-kumar-0363b4262/",
+    displayUrl: "linkedin.com/in/abhinav-kumar-0363b4262",
+    bio: "Aspiring Software Engineer targeting high-scale engineering & product teams (FAANG/MANGA). Open to SWE internships.",
+    status: "Open to Connect",
+    highlights: ["B.Tech CS & DS '28", "Full-Stack", "Problem Solving"],
+    accent: "pink"
+  },
+  email: {
+    id: "email",
+    platform: "Gmail",
+    handle: "itsabhinavkumar9899@gmail.com",
+    url: "mailto:itsabhinavkumar9899@gmail.com",
+    displayUrl: "itsabhinavkumar9899@gmail.com",
+    bio: "Direct inbox for SWE internships, technical collaborations, and full-stack product inquiries.",
+    status: "Replies < 24h",
+    highlights: ["Internships", "Collaborations", "Direct Mail"],
+    accent: "guava"
+  }
 };
 
 export const skillsData = {
@@ -64,7 +107,7 @@ export const projectsData = [
       "Deployed and optimized for production on Vercel with zero cold-start latency"
     ],
     tech: ["React", "Vite", "Node.js", "Express", "MongoDB", "Mongoose", "Vercel", "REST APIs"],
-    github: "https://github.com",
+    github: "https://github.com/itsabhinavkumar9899-create?tab=repositories",
     live: "https://vercel.com",
     featured: true,
     badge: "Production Ready"
@@ -82,7 +125,7 @@ export const projectsData = [
       "Model inference served via high-throughput REST API endpoints"
     ],
     tech: ["Python", "Data Science", "Scikit-Learn", "Pandas", "NumPy", "React", "REST APIs"],
-    github: "https://github.com",
+    github: "https://github.com/itsabhinavkumar9899-create?tab=repositories",
     live: "https://vercel.com",
     featured: true,
     badge: "Machine Learning"
@@ -100,7 +143,7 @@ export const projectsData = [
       "Clean modular React state machine preventing race conditions across concurrent sessions"
     ],
     tech: ["React", "Node.js", "Express", "MongoDB", "WebSockets", "Tailwind CSS"],
-    github: "https://github.com",
+    github: "https://github.com/itsabhinavkumar9899-create?tab=repositories",
     live: "https://vercel.com",
     featured: false,
     badge: "Distributed Systems"
@@ -118,7 +161,7 @@ export const projectsData = [
       "Strict TypeScript type safety ensuring zero runtime boundary faults"
     ],
     tech: ["TypeScript", "React", "HTML5 Canvas", "DSA", "Tailwind CSS"],
-    github: "https://github.com",
+    github: "https://github.com/itsabhinavkumar9899-create?tab=repositories",
     live: "https://vercel.com",
     featured: false,
     badge: "Algorithms & DSA"
