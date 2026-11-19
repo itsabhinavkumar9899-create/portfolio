@@ -98,20 +98,15 @@ npm run preview
 
 ## 🌐 Deploy to Vercel
 
-1. Push this directory to your GitHub repository:
-   ```bash
-   git init
-   git add .
-   git commit -m "feat: initial release of Abhinav Kumar portfolio"
-   git branch -M main
-   git remote add origin https://github.com/itsabhinavkumar9899-create/portfolio.git
-   git push -u origin main
-   ```
-2. Import the project into [Vercel](https://vercel.com):
-   - **Framework Preset:** Vite
-   - **Build Command:** `npm run build`
-   - **Output Directory:** `dist`
-3. Click **Deploy**!
+Import `itsabhinavkumar9899-create/portfolio` from GitHub in [Vercel](https://vercel.com), or open the existing Vercel project and check **Settings → Git**. Use these project settings:
+
+- **Production Branch:** `main`
+- **Root Directory:** `.` (the repository root)
+- **Framework Preset:** Vite
+- **Build Command:** `npm run build`
+- **Output Directory:** `dist`
+
+After setup, each push to `main` should trigger a production deployment. If the latest GitHub commit does not appear in Vercel, confirm that the project is connected to this repository and that its Production Branch is `main`. Then open **Deployments**, check the latest deployment's build logs, and redeploy the latest commit if needed.
 
 ---
 
